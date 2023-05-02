@@ -66,3 +66,6 @@ let user2 = User {
 ```
 
 This way, both `user1` and `user2` will own their own memory for `email`, and you'll be able to access both of them without any errors.
+
+### Automatic referencing 
+Whyyyy? 🥺 I really thought we had a good thing going on here. Well, tbh. it is not that bad, but I feel right now a little bit perplexed. The languege feels very consise (if that is the right term in english), meaning explicit in most statement aside from type inference on variables, the compiler does not even infer return types on functions. The c-like -> dereference operator is quite superflous tbh, but I feel tricked ;-) perhaps in a good way. At least there are no "messages" with [object methodname: param] 🙂 
