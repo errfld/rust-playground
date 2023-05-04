@@ -1,3 +1,5 @@
+use rand::Rng;
+
 #[derive(Debug)]
 enum IpAddr {
     V4(String),
@@ -19,4 +21,20 @@ fn main() {
         Option::None => 0,
     };
     println!("Sum is {}", sum);
+
+    fn add_hat() {
+        println!("Adding a hat")
+    }
+    fn remove_hat() {
+        println!("Removing a hat")
+    }
+
+    for _ in 1..30 {
+        let dice_roll = rand::thread_rng().gen_range(1..=10);
+        match dice_roll {
+            3 => add_hat(),
+            7 => remove_hat(),
+            x => println!("noting happens bacause you rolled: {}", x),
+        }
+    }
 }
