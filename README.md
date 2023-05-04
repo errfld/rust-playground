@@ -67,5 +67,31 @@ let user2 = User {
 
 This way, both `user1` and `user2` will own their own memory for `email`, and you'll be able to access both of them without any errors.
 
-### Automatic referencing 
-Whyyyy? 🥺 I really thought we had a good thing going on here. Well, tbh. it is not that bad, but I feel right now a little bit perplexed. The languege feels very consise (if that is the right term in english), meaning explicit in most statement aside from type inference on variables, the compiler does not even infer return types on functions. The c-like -> dereference operator is quite superflous tbh, but I feel tricked ;-) perhaps in a good way. At least there are no "messages" with [object methodname: param] 🙂 
+### Automatic (de-)referencing 
+Whyyyy? 🥺 I really thought we had a good thing going on here. Well, tbh. it is not that bad, but I feel right now a little bit perplexed. The languege feels very concise (if that is the right term in english), meaning explicit in most statement aside from type inference on variables, the compiler does not even infer return types on functions. The c-like -> dereference operator is quite superflous tbh, but I feel tricked ;-) perhaps in a good way. At least there are no "messages" with [object methodname: param] 🙂 
+
+
+### Modules Cheat Sheet
+My version of the [Cheat Sheet](https://doc.rust-lang.org/stable/book/ch07-02-defining-modules-to-control-scope-and-privacy.html)
+
+- **Start from the crate root:** root files: src/lib.rs and src/main.rs
+- **Declaring modules:** `mod x;` will search for the following: 
+  1. Inline: using `mod x {...} `
+  1. file: `src/x.rs`
+  1. file: `src/x/mod.rs`
+- **Submodules:** No surprise uses the same logic as modules, but the module as `root``
+- **Visibility:** Modules are always private, they habe to be marked with `pub`
+- **use:** Modules are imported using the `use` keyword. Seems to be the same Idea as in Java. 
+
+Restaurant example, module tree: 
+```
+crate
+ └── front_of_house
+     ├── hosting
+     │   ├── add_to_waitlist
+     │   └── seat_at_table
+     └── serving
+         ├── take_order
+         ├── serve_order
+         └── take_payment
+```
