@@ -95,3 +95,8 @@ crate
          ├── serve_order
          └── take_payment
 ```
+
+### unused code on example
+In 7.2. I had some unused code, and the compiler would kindle remind me of that --- always!
+While this is perfect in regular code, I decided to deactivate this warning with `#[allow(dead_code)]`. I could have deactivated it for the complete crate with `#![allow(dead_code)]`.
+

@@ -1,4 +1,6 @@
+#[allow(dead_code)]
 mod front_of_house {
+
     pub mod hosting {
         pub fn add_to_waitlist() {}
         fn seat_at_table() {}
@@ -11,6 +13,7 @@ mod front_of_house {
     }
 }
 
+#[allow(dead_code)]
 mod back_of_house {
     pub struct Breakfast {
         pub toast: String,
@@ -50,7 +53,7 @@ mod customer {
         //try to access private field
         //meal.seasonal_fruit = String::from("sodfmk")
 
-        let order1 = crate::back_of_house::Appetizer::Soup;
-        let order2 = crate::back_of_house::Appetizer::Salad;
+        let _order1 = crate::back_of_house::Appetizer::Soup;
+        let _order2 = crate::back_of_house::Appetizer::Salad;
     }
 }
