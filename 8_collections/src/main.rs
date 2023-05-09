@@ -1,5 +1,3 @@
-use std::collections::btree_map::Values;
-
 fn main() {
     //create an empty vector
     // let v: Vec<i32> = Vec::new();
@@ -29,5 +27,44 @@ fn main() {
     match does_not_exist {
         Some(_) => println!("This should not happen"),
         None => println!("There is no element at index 100"),
+    }
+
+    let first = &v[0];
+
+    //v.push(100); //cannot borrow as mutable because it is also borrowed as immutable Book 8.1
+
+    println!("The first element is: {}", first);
+
+    for i in &mut v {
+        println!("{}", i);
+        *i += 50;
+    }
+
+    let mut s = String::new();
+    let data = "some string";
+    let string_data = data.to_string();
+
+    s.push_str(data);
+
+    println!("s=\"{s}\" and string_data=\"{string_data}\"");
+
+    let combined_string = s + " " + &string_data;
+
+    println!("combined_string:{combined_string}");
+
+    let s1 = String::from("tic");
+    let s2 = String::from("tac");
+    let s3 = String::from("toe");
+    let sg = s1 + "-" + &s2 + "-" + &s3;
+    println!("Gesamt: {sg}"); //s1 can not be borrwed because it ist gone taken by sg and the Add method
+
+    let s1 = String::from("tic");
+    let s2 = String::from("tac");
+    let s3 = String::from("toe");
+    let sg = format!("{s1}-{s2}-{s3}");
+    println!("Gesamt: {sg} Einzeln: {s1}, {s2}, {s3}");
+
+    for c in sg.chars() {
+        println!("{c}");
     }
 }
