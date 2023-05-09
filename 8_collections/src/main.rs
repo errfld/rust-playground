@@ -1,3 +1,7 @@
+use std::collections::HashMap;
+
+use rand::Rng;
+
 fn main() {
     //create an empty vector
     // let v: Vec<i32> = Vec::new();
@@ -66,5 +70,39 @@ fn main() {
 
     for c in sg.chars() {
         println!("{c}");
+    }
+
+    let mut facepalm_per_day = HashMap::new();
+
+    facepalm_per_day.insert("monday".to_string(), 9);
+    facepalm_per_day.insert("tuesday".to_string(), 12);
+    facepalm_per_day.insert("wednesday".to_string(), 4);
+    facepalm_per_day.insert("thursday".to_string(), 7);
+    facepalm_per_day.insert("friday".to_string(), 15);
+
+    for (key, value) in &facepalm_per_day {
+        println!("{key}: {value}");
+    }
+    let saturday = facepalm_per_day.get("saturday").unwrap_or(&0);
+    println!("number of facepalms on saturday: {saturday}");
+    println!("{:?}", facepalm_per_day);
+    facepalm_per_day.entry("saturday".to_string()).or_insert(6);
+    println!("{:?}", facepalm_per_day);
+
+    let days = vec![
+        "monday",
+        "tuesday",
+        "wednesday",
+        "thursday",
+        "friday",
+        "saturday",
+        "sunday",
+    ];
+    for day in days {
+        let count = facepalm_per_day.entry(day.to_string()).or_insert(0);
+        *count += rand::thread_rng().gen_range(1..=10)
+    }
+    for (key, value) in &facepalm_per_day {
+        println!("{key}: {value}");
     }
 }
