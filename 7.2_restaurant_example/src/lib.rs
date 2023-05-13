@@ -42,6 +42,7 @@ fn deliver_order() {}
 
 mod customer {
     use crate::front_of_house::hosting;
+    #[allow(dead_code)]
     pub fn eat_at_restaurant() {
         crate::front_of_house::hosting::add_to_waitlist();
         hosting::add_to_waitlist();
