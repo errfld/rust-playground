@@ -25,10 +25,14 @@ fn if_expressions() {
 }
 
 fn loops() {
+    let mut temp_counter = 0;
     loop {
         //seems to behave like "while(true){}", but as an expression :-)
         println!("all day");
-        break;
+        temp_counter += 1;
+        if temp_counter > 20 {
+            break;
+        }
     }
 
     let mut counter1 = 0;
