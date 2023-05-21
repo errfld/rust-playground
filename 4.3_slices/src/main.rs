@@ -10,11 +10,11 @@ fn main() {
     let slice_of_a = &a[1..3];
     assert_eq!(slice_of_a, &[2, 3]); //that is a bit confusing for me:
     assert_eq!(*slice_of_a, [2, 3]);
-    assert_eq!(&[2, 3], &[2, 3]);
-    //slice_of_a is a reference to index 1 of array a with a lengt of two.
+    //assert_eq!(&[2, 3], &[2, 3]);
+    //slice_of_a is a reference to index 1 of array a with a length of two.
     //I would expect, that slice_of_a is a ptr
-    //but slice_of_a seems to be equal to the referenc on the array containen 2 and 3
-    //is there some automatik deref happening?
+    //but slice_of_a seems to be equal to the reference on the array contains 2 and 3
+    //is there some automatic deref happening?
 }
 
 fn first_word(s: &str) -> &str {
@@ -24,7 +24,7 @@ fn first_word(s: &str) -> &str {
             return &s[..i];
         }
     }
-    &s
+    s
 }
 
 fn first_pos(s: &String) -> usize {
