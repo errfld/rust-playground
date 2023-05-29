@@ -136,10 +136,10 @@ fn fib_iterative(n_th: u32) -> u128 {
     let mut res_1: u128 = 0;
     for _x in 2..n_th {
         let tmp = res;
-        res = res + res_1;
+        res += res_1;
         res_1 = tmp;
     }
-    return res;
+    res
 }
 
 fn test_fib() {

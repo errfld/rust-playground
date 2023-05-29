@@ -2,7 +2,7 @@ pub fn add(left: usize, right: usize) -> usize {
     left + right
 }
 
-mod Rect {
+pub mod rect {
 
     pub struct Rectangle {
         width: u32,
@@ -10,20 +10,20 @@ mod Rect {
     }
 
     impl Rectangle {
-        fn new(width: u32, height: u32) -> Self {
+        pub fn new(width: u32, height: u32) -> Self {
             if width == 0 || height == 0 {
                 panic!("No dimension must be 0 or lower");
             }
             Rectangle { width, height }
         }
 
-        fn can_hold(&self, other: &Rectangle) -> bool {
+        pub fn can_hold(&self, other: &Rectangle) -> bool {
             self.width >= other.width && self.height >= other.height
         }
     }
 
     pub fn greeting(name: &str) -> String {
-        format!("Hello, name")
+        format!("Hello, {name}")
     }
 
     #[cfg(test)]

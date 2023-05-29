@@ -16,14 +16,14 @@ impl Cuboid {
     fn volume(&self) -> u32 {
         self.length * self.width * self.height
     }
-    fn surface(self: &Self) -> u32 {
+    fn surface(&self) -> u32 {
         2 * self.length * self.height + 2 * self.length * self.width + 2 * self.height * self.width
     }
-    fn scale(self: &mut Self, factor: u32) -> &mut Self {
+    fn scale(&mut self, factor: u32) -> &mut Self {
         self.length *= factor;
         self.height *= factor;
         self.width *= factor;
-        return self;
+        self
     }
 }
 
@@ -74,8 +74,8 @@ fn main() {
 fn build_user(email: String, username: String) -> User {
     User {
         active: true,
-        username: username,
-        email: email,
+        username,
+        email,
         sign_in_count: 1,
     }
 }
