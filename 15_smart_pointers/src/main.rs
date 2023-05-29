@@ -1,4 +1,8 @@
-use std::{ops::Deref, rc::Rc};
+use std::{
+    cell::RefCell,
+    ops::Deref,
+    rc::{Rc, Weak},
+};
 
 use crate::List::{Cons, Nil};
 
@@ -37,6 +41,24 @@ fn main() {
     println!("DropTracePointer created");
     std::mem::drop(_c);
     println!("DropTracePointer c dropped before the end of main");
+
+    let leaf = Rc::new(Node {
+        value: 3,
+        children: RefCell::new(vec![]),
+        parent: RefCell::new(Weak::new()),
+    });
+
+    println!("leaf parent = {:?}", leaf.parent.borrow().upgrade());
+
+    let branch = Rc::new(Node {
+        value: 55,
+        children: RefCell::new(vec![Rc::clone(&leaf)]),
+        parent: RefCell::new(Weak::new()),
+    });
+
+    *leaf.parent.borrow_mut() = Rc::downgrade(&branch);
+
+    println!("leaf parent = {:?}", leaf.parent.borrow().upgrade());
 }
 
 #[derive(Debug)]
@@ -65,12 +87,22 @@ fn say_hello(name: &str) {
     println!("Hello, {name}!");
 }
 
-struct DropTracePointer {
-    data: String,
+struct DropTracePointer<T: std::fmt::Display> {
+    data: T,
 }
 
-impl Drop for DropTracePointer {
+impl<T: std::fmt::Display> Drop for DropTracePointer<T> {
     fn drop(&mut self) {
-        println!("Dropping the DropTracePointer with data: `{}`", self.data);
+        println!(
+            "Dropping String from DropTracePointer with data: `{}`",
+            self.data
+        );
     }
+}
+
+#[derive(Debug)]
+struct Node {
+    value: i32,
+    children: RefCell<Vec<Rc<Node>>>,
+    parent: RefCell<Weak<Node>>,
 }

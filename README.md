@@ -129,3 +129,7 @@ impl<T: std::cmp::PartialOrd> Wiener<T> for Vec<T> {
     }
 }
 ```
+
+### Smart Pointers
+
+[15](https://doc.rust-lang.org/book/ch15-00-smart-pointers.html) is the first article, where I keep struggeling. Smart pointers aren't that bad on their own, but I guess you can build quite complex relations with RefCell/Box/RC. Espacially when starting to combine them to types like RefCell<Rc<T>> - RefCell seems very dangerous at first glance, you should not be able to violate rules like having two mutable refs of the same object within the same scope, but I guess someone can do soome crazy with it. 
