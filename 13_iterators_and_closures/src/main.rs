@@ -41,7 +41,7 @@ fn fn_mut_example() {
 
     list.sort_by_key(|r| {
         sort_operations.push(value.clone());
-        r.width
+        r.width * r.height
     });
     println!("{:#?}", list);
     println!("Sort operations {}", sort_operations.len())

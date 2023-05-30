@@ -18,13 +18,7 @@ fn main() {
     }
 
     //mutable
-    let mut v = Vec::new();
-    //without pushing a specific type rust can not inference type
-    v.push(4);
-    v.push(5);
-    v.push(6);
-    v.push(7);
-    v.push(8);
+    let mut v = vec![4, 5, 6, 7, 8];
 
     //let does_not_exist = &v[100]; //panics with index out of bounds
     let does_not_exist = &v.get(100);
