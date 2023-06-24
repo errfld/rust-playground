@@ -12,17 +12,29 @@ enum UpdateCommand {
     Remove(i32),
 }
 
+impl Default for AveragedCollection {
+    fn default() -> Self {
+        AveragedCollection::new()
+    }
+}
+
 impl AveragedCollection {
+    pub fn new() -> Self {
+        AveragedCollection {
+            list: Vec::new(),
+            average: 0.0,
+        }
+    }
     pub fn add(&mut self, value: i32) {
         self.list.push(value);
-        self.updata_average(UpdateCommand::Add(value));
+        self.update_average(UpdateCommand::Add(value));
     }
 
     pub fn remove(&mut self) -> Option<i32> {
         let result = self.list.pop();
         match result {
             Some(value) => {
-                self.updata_average(UpdateCommand::Remove(value));
+                self.update_average(UpdateCommand::Remove(value));
                 Some(value)
             }
             None => None,
@@ -33,7 +45,7 @@ impl AveragedCollection {
         self.average
     }
 
-    fn updata_average(&mut self, command: UpdateCommand) {
+    fn update_average(&mut self, command: UpdateCommand) {
         if self.list.is_empty() {
             self.average = 0.0;
             return;

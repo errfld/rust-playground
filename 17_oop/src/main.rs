@@ -1,4 +1,4 @@
-use oop::{Button, Draw, Screen};
+use oop::{AveragedCollection, Button, Draw, Screen};
 
 fn main() {
     let screen = Screen {
@@ -20,6 +20,16 @@ fn main() {
         ],
     };
     screen.run();
+
+    let mut collection = AveragedCollection::new();
+    collection.add(1);
+    collection.add(2);
+    collection.add(3);
+    collection.add(4);
+    let average1 = collection.average();
+    collection.remove();
+    let average2 = collection.average();
+    println!("average1: {}, average2: {}", average1, average2);
 }
 
 struct SelectBox {

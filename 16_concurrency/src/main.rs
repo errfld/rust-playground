@@ -1,5 +1,4 @@
 use std::{
-    rc::Rc,
     sync::{mpsc, Arc, Mutex},
     thread,
     time::Duration,
